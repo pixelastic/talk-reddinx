@@ -1,24 +1,26 @@
 {
+  "dependencies": {
+    "norska": "1.9.0"
+  },
   "devDependencies": {
     "aberlaas": "1.14.0"
   },
-  "files": [
-    "lib/*.js"
-  ],
+  "files": [],
   "license": "MIT",
   "main": "lib/main.js",
   "name": "talk-reddinx",
   "scripts": {
+    "build": "./scripts/build",
+    "build:prod": "./scripts/build-prod",
     "ci": "./scripts/ci",
+    "cms": "./scripts/cms",
     "husky:precommit": "./scripts/husky-precommit",
     "lint": "./scripts/lint",
     "lint:fix": "./scripts/lint-fix",
     "release": "./scripts/release",
+    "serve": "./scripts/serve",
     "test": "./scripts/test",
     "test:watch": "./scripts/test-watch"
   },
-  "version": "0.0.1",
-  "dependencies": {
-    "norska": "1.9.0"
-  }
+  "version": "0.0.1"
 }
