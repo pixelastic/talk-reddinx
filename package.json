@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "norska": "1.10.0"
+    "norska": "1.10.0",
+    "norska-theme-slides": "0.0.2"
   },
   "devDependencies": {
     "aberlaas": "1.14.0"

@@ -3,4 +3,79 @@
 //- ---
 
 block content
-  p This is your website
+  +slide.bg-green.debug
+    .flex.h-100p.flex-center
+      .text-3 reddinx
+
+  +slide
+    p Who am I?
+    p Doctolib, former Algolia
+    p Used to organize this event, now I can present my side project here
+
+  +slide
+    p On my free time, I play D&D
+    p As the game master, I need to place my players in fantastic locations
+    p And I love nice maps for that: flying castle in the sky, abandoned shipyard, forgotten undercity, etc
+
+  +slide
+    p I browser /dndmaps on reddit
+    p Amateur and pro maps, awesome treasure trove
+    p Great to find inspiration, always new
+
+  +slide
+    p bad to search for something specific, bad search
+
+  +slide
+    p But they have an API
+    p Great because self-explanatory, no auth, lots of data
+    p Bad because same, can't go to far in the past
+    p Have personal API as well for finding old elements
+
+  +slide
+    p Crappy Search
+    p Availabe API
+    p Algolia
+    p Recipe for side project
+
+  +slide
+    p /maps
+    p Demo
+    p Infinite scroll, sorted by popularity, newest first
+
+  +slide
+    p Getting the data
+    p Find subreddit creation date
+    p target API and ask for all posts in batch, month after month
+    p {Screenshot of the folders, with each month}
+    p {Screenshot of the final looking Algolia record}
+
+  +slide
+    p Automatic updates
+    p Script on Circle CI, runs every day
+    p Picks the latest posts and update the data
+    p Adds new one and updates popularity of old ones
+    p (yes, there is a window where popularity is off if an old one is upvoted)
+
+  +slide
+    p Front end is one HTML page
+    p The full Pinterest time-sucking experience
+    p Algolia for Infinite Hits
+    p CSS Grid for the masonry effect (code example of JS/CSS?)
+
+  +slide
+    p Project is open source
+    p Website, with all the data, and if you want to build a similar UI
+    p Reddinx if you want to index another of your favorite subreddits
+    p Works best if images, but I'm taking PRs to make it work with more text
+
+  +slide
+    p Remember, there is tons of data out there
+    p Algolia is a great way to make it easier to navigate and open to more people
+    p Pick a dataset, dump it into Algolia
+    p Everything is better with Search
+
+  +slide
+    p Thanks!
+
+
+
