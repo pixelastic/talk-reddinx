@@ -8,28 +8,101 @@ block content
       .text-10 reddinx
 
   +slide
-    p Who am I?
-    p Doctolib, former Algolia
-    p Used to organize this event, now I can present my side project here
+    +title Who am I?
+    .flex.h-100p.flex-center
+      .flex-none.flex.flex-row
+        .flex-auto.text-right
+          .text-6.mb-3 Tim Carry
+          .text-4.gray-7 Full-Stack Engineer at #[img.h-6.inline-block(src="./assets/images/doctolib.png")]
+          .text-3.gray-6 Previously at #[img.h-6.inline-block(src="./assets/images/algolia.png")]
+          .text-6.green.mt-3
+            .inline @
+            .inline.underline pixelastic
+        .flex-auto.ml-4
+            img.h-20.rounded-full(src=`./assets/images/avatar.jpg`, alt="Tim Carry")
+    .notes
+      p Used to work here
+      p Actually, used to co-organize this event, so very happy to be able to be part of it again
 
   +slide
-    p On my free time, I play D&D
-    p As the game master, I need to place my players in fantastic locations
-    p And I love nice maps for that: flying castle in the sky, abandoned shipyard, forgotten undercity, etc
+    .absolute.inset-0.z-0
+      .absolute.inset-0.bg-cover(style="background-image:url('./assets/images/gm.jpg')")
+      .absolute.inset-0.bg-black.bg-opacity-50p
+    .flex.flex-col.z-1.h-100p
+      .flex.justify-center
+        img.h-15.mt-5(src="./assets/images/dndlogo.png")
+      .flex.flex-auto.flex-row.items-center.justify-around(data-step)
+        .fln
+          img.rounded.w-13(src="./assets/images/map4.png")
+        .fln
+          img.rounded.w-13(src="./assets/images/map3.png")
+        .fln
+          img.rounded.w-13(src="./assets/images/map5.png")
+        .fln
+          img.rounded.w-13(src="./assets/images/map6.png")
+        .fln
+          img.rounded.w-13(src="./assets/images/map7.png")
+        .fln
+          img.rounded.w-13(src="./assets/images/map2.png")
+    .notes
+      p I also love to gather a bunch of friends, sit around and play Dungeons & Dragons
+      p As the gamemaster, I like to create stories to engage my players
+      p Have them in fantastic locations, like in a flying city, in the heart of a volcano or a haunted manor
+      p Great way to spark the imagination is to have a map to share
 
   +slide
-    p I browser /dndmaps on reddit
-    p Amateur and pro maps, awesome treasure trove
-    p Great to find inspiration, always new
+    +title reddit.com/r/dndmaps/ 💎
+    .flex.h-100p.flex-row
+      .flex-none.w-50p
+        img.rounded.shadow-3(src="./assets/images/dndmaps.png")
+      .flex-auto.flex.flex-center
+        .flex.flex-col
+          .bullet-green.bullet-tick Free
+          .bullet-green.bullet-tick Updated daily
+          .bullet-green.bullet-tick Amateur and pro quality
+          .bullet-green.bullet-tick Great source of inspiration
 
   +slide
-    p bad to search for something specific, bad search
+    +title reddit.com/search/ 💩
+    .flex.h-100p.flex-row
+      .flex-none.w-50p
+        img.rounded.shadow-3(src="./assets/images/redditsearch.png")
+      .flex-auto.flex.flex-center
+        .flex.flex-col
+          .bullet-red.bullet-cross Slow
+          .bullet-red.bullet-cross No typo tolerance
+          .bullet-red.bullet-cross Frustrating to use
+          .bullet-red.bullet-cross Visually cluttered results
 
   +slide
-    p But they have an API
-    p Great because self-explanatory, no auth, lots of data
-    p Bad because same, can't go to far in the past
-    p Have personal API as well for finding old elements
+    .notes
+      p No authentication required
+      p Easy to test in browser
+      p Seems to work pretty well
+    +title api.reddit.com/
+    .flex.h-100p.flex-col
+      .flex.p-4.flex-center
+        code.code 
+          .inline.white api.reddit.com/api/info/
+          .inline.gray ?
+          .inline.green id
+          .inline.gray =
+          .inline.blue-5 t3_
+          .inline.blue-3 hvjxtn
+      .flex.flex-auto
+        .codeblock.language-json.text-1.overflow-hidden.px-1.pb-1
+          | "dependencies": {
+          |    "algoliasearch": "^3.35.1",
+          |    "instantsearch.js": "^4.1.1",
+          |    "lazysizes": "^5.2.0",
+          |    "lodash-es": "^4.17.15"
+          | }
+
+
+    //- p But they have an API
+    //- p Great because self-explanatory, no auth, lots of data
+    //- p Bad because same, can't go to far in the past
+    //- p Have personal API as well for finding old elements
 
   +slide
     p Crappy Search
@@ -46,6 +119,7 @@ block content
     p Getting the data
     p Find subreddit creation date
     p target API and ask for all posts in batch, month after month
+    p Pushshift
     p {Screenshot of the folders, with each month}
     p {Screenshot of the final looking Algolia record}
 
