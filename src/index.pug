@@ -17,7 +17,7 @@ block content
           .text-3.gray-6 Previously at #[img.h-6.inline-block(src="./assets/images/algolia.png")]
           .text-6.green.mt-3
             .inline @
-            .inline.underline pixelastic
+            .inline.underline.text-shadow pixelastic
         .flex-auto.ml-4
             img.h-20.rounded-full(src=`./assets/images/avatar.jpg`, alt="Tim Carry")
     .notes
@@ -51,21 +51,21 @@ block content
       p Great way to spark the imagination is to have a map to share
 
   +slide
-    +title reddit.com/r/dndmaps/ 💎
+    +title reddit.com/r/dndmaps 💎
     .flex.h-100p.flex-row
-      .flex-none.w-50p.h-100p
+      .flex-none.w-50p
         img.h-100p.rounded.shadow-3(src="./assets/images/dndmaps.png")
       .flex-auto.flex.items-center.mx-3
-        .flex.flex-col
+        .flex.flex-col.text-3
           .bullet-green.bullet-tick Free
           .bullet-green.bullet-tick Updated daily
           .bullet-green.bullet-tick Amateur and pro quality
           .bullet-green.bullet-tick Great source of inspiration
 
   +slide
-    +title reddit.com/search/ 💩
+    +title reddit.com/search 💩
     .flex.h-100p.flex-row
-      .flex-none.w-50p.h-100p
+      .flex-none.w-50p
         img.h-100p.rounded.shadow-3(src="./assets/images/redditsearch.png")
       .flex-auto.flex.items-center.mx-3
         .flex.flex-col
@@ -75,11 +75,7 @@ block content
           .bullet-red.bullet-cross Visually cluttered results
 
   +slide
-    .notes
-      p No authentication required
-      p Easy to test in browser
-      p Seems to work pretty well
-    +title api.reddit.com/
+    +title api.reddit.com 🤖
     .flex.h-100p.flex-col
       .flex.p-4.flex-center
         code.code 
@@ -89,58 +85,167 @@ block content
           .inline.gray =
           .inline.blue-5 t3_
           .inline.blue-3 hvjxtn
-      .flex.flex-auto
+      .flex.flex-auto.flex-center.bg-gray-9
         .codeblock.language-json.text-1.overflow-hidden.px-1.pb-1
-          | "dependencies": {
-          |    "algoliasearch": "^3.35.1",
-          |    "instantsearch.js": "^4.1.1",
-          |    "lazysizes": "^5.2.0",
-          |    "lodash-es": "^4.17.15"
-          | }
+          |{
+          |    "id": "hvjxtn",
+          |    "title": "Dragonship - A living forest dragon pirate ship - Made in Inkarnate - 44 x 33",
+          |    "permalink": "/r/dndmaps/comments/hvjxtn/dragonship_a_living_forest_dragon_pirate_ship/",
+          |    "thumbnail": "https://b.thumbs.redditmedia.com/9psU-VI15Vf2AnWG6cJ5SA6djUKoPY4a_IlYo09_9MU.jpg",
+          |    "created": 1595408294.0,
+          |    "score": 116,
+          |    "subreddit": "dndmaps",
+          |    "author": "crashgem",
+          |    "ups": 116,
+          |}
 
+  +slide.bg-blue.flex-center
+    .flex.flex-col.white.text-shadow
+      .flex-auto.flex.flex-row.text-6
+        .flex-none.w-6  
+        .flex-none.px-2 💎
+        .flex-none.pl-3 Great data
+      .flex-auto.flex.flex-row.text-6
+        .flex-none.w-6 -
+        .flex-none.px-2 💩
+        .flex-none.pl-3 Crappy Search
+      .flex-auto.flex.flex-row.text-6.border-b-01.border-white
+        .flex-none.w-6 +
+        .flex-none.px-2 🤖
+        .flex-none.pl-3 Available API
+      .flex-auto.flex.flex-row.text-6(data-step)
+        .flex-none.w-6 =
+        .flex-none.px-2 🔎
+        .flex-none.pl-3.bold Algolia Project
 
-    //- p But they have an API
-    //- p Great because self-explanatory, no auth, lots of data
-    //- p Bad because same, can't go to far in the past
-    //- p Have personal API as well for finding old elements
-
-  +slide
-    p Crappy Search
-    p Availabe API
-    p Algolia
-    p Recipe for side project
-
-  +slide
-    p /maps
-    p Demo
-    p Infinite scroll, sorted by popularity, newest first
-
-  +slide
-    p Getting the data
-    p Find subreddit creation date
-    p target API and ask for all posts in batch, month after month
-    p Pushshift
-    p {Screenshot of the folders, with each month}
-    p {Screenshot of the final looking Algolia record}
-
-  +slide
-    p Automatic updates
-    p Script on Circle CI, runs every day
-    p Picks the latest posts and update the data
-    p Adds new one and updates popularity of old ones
-    p (yes, there is a window where popularity is off if an old one is upvoted)
+  +slide.bg-blue-7
+    a.absolute.inset-0.mt-8.z-0.bg-cover(style="background-image:url('./assets/images/maps.png')", href="https://gamemaster.pixelastic.com/maps/", target="_blank")
+    +title 
+      a.white(href="https://gamemaster.pixelastic.com/maps/") gamemaster.pixelastic.com/maps/ 🧭
 
   +slide
-    p Front end is one HTML page
-    p The full Pinterest time-sucking experience
-    p Algolia for Infinite Hits
-    p CSS Grid for the masonry effect (code example of JS/CSS?)
+    +title 3 major steps
+    .flex.flex-col.flex-center.h-100p
+      .flex.flex-col.text-5
+        .bullet-1.bullet-green Fetching the #[.inline.orange initial] data
+        .bullet-2.bullet-green Keeping data #[.inline.orange fresh]
+        .bullet-3.bullet-green Building the #[.inline.orange search UI]
 
   +slide
-    p Project is open source
-    p Website, with all the data, and if you want to build a similar UI
-    p Reddinx if you want to index another of your favorite subreddits
-    p Works best if images, but I'm taking PRs to make it work with more text
+    +title Fetching the initial data
+    .flex.h-100p.flex-row
+      .flex-none.w-50p.flex.flex-col.flex-center
+        .flex.flex-col
+          .flex.justify-center.mb-3
+            img.h-10(src="./assets/images/reddit.png")
+          .flex.justify-center.mb-3
+            code.code api.reddit.com
+          .flex.bullet-green.bullet-tick Details of a post
+          .flex.bullet-red.bullet-cross History of a subreddit
+      .flex-none.w-50p.flex.flex-col.flex-center(data-step)
+        .flex.flex-col
+          .flex.justify-center.mb-3
+            img.h-10(src="./assets/images/pushshift.png")
+          .flex.justify-center.mb-3
+            code.code api.pushshift.io
+          .flex.bullet-red.bullet-cross Details of a post
+          .flex.bullet-green.bullet-tick History of a subreddit
+
+  +slide.bg-gray-9
+    .flex.flex-row.h-100p
+      .flex
+        .codeblock.text-1.overflow-hidden.px-1.pb-1.lh-1
+          |data
+          |├── 2017
+          |│   ├── 01
+          |│   ├── 02
+          |│   ├── 03
+          |│   │   ├── t3_6a0f2s.json
+          |│   │   ├── t3_6a0o4n.json
+          |│   │   ├── t3_6a7au5.json
+          |│   │   ├── t3_6aex01.json
+          |│   │   ├── t3_6aype2.json
+          |│   │   ├── t3_6azfnv.json
+          |│   │   ├── t3_6b6zev.json
+          |│   │   ├── t3_6bbdis.json
+          |│   │   └── t3_6bj0y9.json
+          |│   ├── 04
+          |│   ├── 05
+          |│   ├── 06
+          |│   ├── 07
+          |│   ├── 08
+          |│   ├── 09
+          |│   ├── 10
+          |│   ├── 11
+          |│   └── 12
+          |├── 2018
+          |│   ├── 01
+          |│   ├── 02
+          |│   ├── 03
+          |│   ├── 04
+          |│   ├── 05
+      .flex.flex-center.overflow-hidden.border-l-01.border-gray-8.ml-3.pl-3
+        .codeblock.language-json.text-1.overflow-hidden.px-1.pb-1.lh-1
+          |{
+          |  "id": "t3_hvjxtn",
+          |  "title": "Dragonship - A living forest dragon pirate ship - Made in Inkarnate - 44 x 33",
+          |  "url": "https://www.reddit.com/r/dndmaps/comments/hvjxtn/dragonship_a_living_forest_dragon_pirate_ship/",
+          |  "author": {
+          |    "id": "t2_c5ezw",
+          |    "name": "crashgem"
+          |  },
+          |  "picture": {
+          |    "full": "https://preview.redd.it/42epgdrp4bc51.jpg?auto=webp&s=515cbdf60a128fbfae0e7c191b60e2b737988a92",
+          |    "preview": "https://preview.redd.it/42epgdrp4bc51.jpg?width=640&crop=smart&auto=webp&s=cf1bb269ef5c065da05242b79bc263a4d00553e8",
+          |    "thumbnail": "https://b.thumbs.redditmedia.com/9psU-VI15Vf2AnWG6cJ5SA6djUKoPY4a_IlYo09_9MU.jpg"
+          |  },
+          |  "score": {
+          |    "comments": 4,
+          |    "downs": 0,
+          |    "ratio": 1,
+          |    "ups": 110,
+          |    "value": 110
+          |  },
+          |  "tags": ["Vessel"],
+          |}
+
+  +slide
+    +title Keeping data fresh
+    .flex.h-100p.flex-col.items-center
+      .flex-auto.flex-col.w-80p
+        .text-6.blue.bold.text-shadow Frequency
+        .text-3.ml-6 How often do you want to update the data?
+        .text-3.ml-9.bullet-arrow.bullet-green.bold(data-step) Every day
+      .flex-auto.flex-col.w-80p
+        .text-6.orange.bold.text-shadow Quantity
+        .text-3.ml-6 How far back do you want to update the data?
+        .text-3.ml-9.bullet-arrow.bullet-green.bold(data-step) Up to 7 days
+
+
+  +slide
+    p Front-end
+    p Wanted to replicate the Pinterest experience
+    p The one where you just wasted 40mn of your time because the scroll never ends and you just want to see a bit more of the next picture
+    p Also because interesting CSS challenge to tackle
+
+  +slide
+    p Infinite scroll thanks to Algolia InfiniteHits widget
+    p Add a "sentinel" at the bottom. When enters the viewport (with delay), loads more results
+
+  +slide
+    p Masonry effect
+    p CSS grid. Defined a grid of very small increments (like 10px). 
+    p Then when a hit is loaded I calculate the number of grid elements it spans and set it in its style
+    p This is a hack, and browser do not expect your grid to be that small
+    p There is a limit to the number of grid lines you can have
+    p When I know I'll reach that limit, I stop loading more element (so not so infinite)
+
+  +slide
+    p Open-Source
+    p Repo of maps + website is on GitHub
+    p Use the JSON data if you want, use it as inspiration to build your own
+    p Scripts to download data from reddit and push it to Algolia is packaged as reddinx
+    p Code example of the initial or incremental scripts
 
   +slide
     p Remember, there is tons of data out there
