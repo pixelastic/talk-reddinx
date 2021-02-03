@@ -1,6 +1,6 @@
 {
-  "description": "Your website description. You can overwrite it in any pug file",
-  "title": "Default page title. You can overwrite it in any pug file",
-  "twitter": "yourusername",
-  "productionUrl": "http://www.your-production-url.com/"
+  "description": "Searching into your favorite subreddit with Algolia",
+  "title": "Reddinx: A reddit indexer",
+  "twitter": "pixelastic",
+  "productionUrl": "https://talks.pixelastic.com/slides/algolia-community-reddinx/"
 }

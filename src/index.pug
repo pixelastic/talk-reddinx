@@ -1,11 +1,13 @@
 //- ---
-//- title: Index
+//- author: Tim Carry
 //- ---
 
 block content
-  +slide.bg-green.debug
-    .flex.h-100p.flex-center
-      .text-10 reddinx
+  +slide.bg-green
+    .flex.flex-center.h-100p
+      .flex.flex-col
+        .flex.text-6.white.bold.text-shadow Reddinx: A reddit indexer
+        .flex.white.text-shadow.bullet-arrow  Search your favorite subreddit with Algolia
 
   +slide
     +title Who am I?
@@ -53,8 +55,7 @@ block content
   +slide
     +title reddit.com/r/dndmaps 💎
     .flex.h-100p.flex-row
-      .flex-none.w-50p
-        img.h-100p.rounded.shadow-3(src="./assets/images/dndmaps.png")
+      .flex-none.w-50p(style="background-image:url('./assets/images/dndmaps.png')")
       .flex-auto.flex.items-center.mx-3
         .flex.flex-col.text-3
           .bullet-green.bullet-tick Free
@@ -65,8 +66,7 @@ block content
   +slide
     +title reddit.com/search 💩
     .flex.h-100p.flex-row
-      .flex-none.w-50p
-        img.h-100p.rounded.shadow-3(src="./assets/images/redditsearch.png")
+      .flex-none.w-50p(style="background-image:url('./assets/images/redditsearch.png')")
       .flex-auto.flex.items-center.mx-3
         .flex.flex-col
           .bullet-red.bullet-cross Slow
@@ -132,7 +132,7 @@ block content
         .bullet-3.bullet-green Building the #[.inline.orange search UI]
 
   +slide
-    +title Fetching the initial data
+    +title 1. Fetching the initial data
     .flex.h-100p.flex-row
       .flex-none.w-50p.flex.flex-col.flex-center
         .flex.flex-col
@@ -210,7 +210,7 @@ block content
           |}
 
   +slide
-    +title Keeping data fresh
+    +title 2. Keeping data fresh
     .flex.h-100p.flex-col.items-center
       .flex-auto.flex-col.w-80p
         .text-6.blue.bold.text-shadow Frequency
@@ -222,39 +222,66 @@ block content
         .text-3.ml-9.bullet-arrow.bullet-green.bold(data-step) Up to 7 days
 
 
-  +slide
-    p Front-end
-    p Wanted to replicate the Pinterest experience
-    p The one where you just wasted 40mn of your time because the scroll never ends and you just want to see a bit more of the next picture
-    p Also because interesting CSS challenge to tackle
+  mixin search_ui()
+    .flex.flex-row.h-100p
+      .flex-none.w-50p.relative.flex.flex-center
+        .z-0.absolute.inset-0.m-9.bg-contain.bg-no-repeat(style="background-image:url('./assets/images/pinterest.png')")
+        .z-0.absolute.inset-0.bg-white.bg-opacity-75p
+        .z-1.relative.flex.flex-col.text-5
+          block
+      .flex-none.w-50p.px-4.flex-center.flex
+        img.rounded.shadow-4(src="./assets/images/maps.png")
 
   +slide
-    p Infinite scroll thanks to Algolia InfiniteHits widget
-    p Add a "sentinel" at the bottom. When enters the viewport (with delay), loads more results
+    +title 3. Building the Search UI
+    +search_ui
+      .bullet-arrow.bullet-green Infinite scroll
+      .bullet-arrow.bullet-green Masonry effect
 
   +slide
-    p Masonry effect
-    p CSS grid. Defined a grid of very small increments (like 10px). 
-    p Then when a hit is loaded I calculate the number of grid elements it spans and set it in its style
-    p This is a hack, and browser do not expect your grid to be that small
-    p There is a limit to the number of grid lines you can have
-    p When I know I'll reach that limit, I stop loading more element (so not so infinite)
+    +title 3. Building the Search UI: Infinite Scroll
+    +search_ui
+      code.code.text-3.lh-5
+        .gray // Javascript
+        .green widgets.infiniteHits()
+        .orange IntersectionObserver()
 
   +slide
-    p Open-Source
-    p Repo of maps + website is on GitHub
-    p Use the JSON data if you want, use it as inspiration to build your own
-    p Scripts to download data from reddit and push it to Algolia is packaged as reddinx
-    p Code example of the initial or incremental scripts
+    +title 3. Building the Search UI: Masonry effect
+    +search_ui
+      code.code.text-3.lh-5
+        .gray /* CSS */
+        .orange grid-auto-rows: 10px
+        .orange
+          .inline grid-row-end: span 
+          .inline.yellow-4.bold ???
+        .gray // Javascript
+        .green onHeightChange()
 
-  +slide
-    p Remember, there is tons of data out there
-    p Algolia is a great way to make it easier to navigate and open to more people
-    p Pick a dataset, dump it into Algolia
-    p Everything is better with Search
-
-  +slide
-    p Thanks!
+  +slide.bg-gray-9
+    +title.white Open-Source
+    .flex.flex-center.h-100p
+      .codeblock.language-js.text-3.overflow-hidden.px-1.pb-1
+        |// Load it as an npm module
+        |const reddinx = require('reddinx');
+        |// Pick any subreddit
+        |const subredditName = 'dndmaps';
+        |// Fetch initial data
+        |await reddinx.initial(subredditName);
+        |// Keep data fresh
+        |await reddinx.incremental(subredditName);
+        
+  +slide.bg-green
+    .flex.flex-col.h-100p.white.text-shadow
+      .flex-auto.flex.text-8.text-shadow.bold.flex-center Thank you
+      .flex-auto.flex.flex-col.text-5.ml-6
+        .flex.flex-row.mb-5
+          .flex.w-9.mr-3 🧭
+          a.flex.underline(href="https://gamemaster.pixelastic.com/maps") gamemaster.pixelastic.com/maps/
+        .flex.flex-row
+          .flex.w-9.mr-3
+            +svg_yarn.w-9.fill-current
+          a.flex.underline(href="https://yarn.pm/reddinx") yarn.pm/reddinx
 
 
 
