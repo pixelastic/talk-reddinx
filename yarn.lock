@@ -10206,10 +10206,10 @@ norska-theme-default@^1.11.0:
   resolved "https://registry.npmjs.org/norska-theme-default/-/norska-theme-default-1.11.0.tgz#effc8529a9163f4e6d2a627b30d915baea2bf4fa"
   integrity sha512-cIhg+7uG5syVbnNJnrnNWunTQJ76fJb9PTfB2Iy4RXu46M+basLVy5nBnNX0LkT1ouVLv8c+8DHUniVfVthyjA==
 
-norska-theme-slides@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.npmjs.org/norska-theme-slides/-/norska-theme-slides-0.1.0.tgz#f82b622977c864415ef2c93758d13c75abb53c14"
-  integrity sha512-o0psEarIcbmAifmtq+gQVa9Kjpn238MPRMDcv7WqQ0ESUCn0bqcQUCV7rwriUxsWzmsXsNlCZYCmifbj/WKwHg==
+norska-theme-slides@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/norska-theme-slides/-/norska-theme-slides-0.2.0.tgz#a96c6b2b2f907123c8bf47911996156b080bc724"
+  integrity sha512-DV4i97Idt7kyvr+yRnnrAp4m+qAsKUJKOl+5l/1o4p6wS/1j9F358e1WPd053mU3LFxY12rJHajb07h99NOjtQ==
   dependencies:
     highlight.js "10.5.0"
 
