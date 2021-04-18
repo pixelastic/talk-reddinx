@@ -4,7 +4,7 @@
     "norska-theme-slides": "0.2.0"
   },
   "devDependencies": {
-    "aberlaas": "1.15.0"
+    "aberlaas": "1.16.0"
   },
   "files": [],
   "license": "MIT",
